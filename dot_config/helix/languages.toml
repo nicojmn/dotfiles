@@ -1,0 +1,147 @@
+[language-server.gpt]
+command = "helix-gpt"
+args = ["--handler", "copilot", "--copilotApiKey", "SECRET"]
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+config = { python = { analysis = { typeCheckingMode = "basic" } } }
+
+[language-server.harper-ls]
+command = "harper-ls"
+args = ["--stdio"]
+diagnosticSeverity = "warning"
+
+[language-server.harper-ls.config.harper-ls.linters]
+spaces = false
+Spaces = false
+NoFrenchSpaces = false
+LongSentences = false
+
+[[language]]
+name = "python"
+language-servers = ["pyright","ruff", "gpt"]
+formatter = { command = "ruff", args = ["format", "-"] }
+auto-format = true
+indent = {tab-width = 4, unit = "  "}
+
+[[language]]
+name = "c"
+language-servers = ["clangd"]
+auto-format = true
+indent = {tab-width = 4, unit = " "}
+
+[[language]]
+name = "erlang"
+language-servers = ["erlang-ls", "gpt"]
+auto-format = false
+indent = {tab-width = 4, unit = " "}
+
+[[language]]
+name = "java"
+language-servers = ["jdtls", "gpt"]
+auto-format = true
+indent = {tab-width = 4, unit = " "}
+
+[[language]]
+name = "java"
+language-servers = ["jdtls"]
+auto-format = true
+indent = {tab-width = 4, unit = " "}
+
+[[language]]
+name ="toml"
+formatter  = { command = "taplo" }
+indent = {tab-width = 2, unit = " "}
+auto-format = true
+
+[[language]]
+name ="json"
+language-servers = ["jsonlsp"]
+indent = {tab-width = 2, unit = " "}
+auto-format = true
+
+[language-server.jsonlsp]
+command = "vscode-json-language-server"
+args = ["--stdio"]
+
+[[language]]
+name ="yaml"
+formatter  = { command = "yaml-language-server" }
+indent = {tab-width = 1, unit = "  "}
+auto-format = true
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman", "harper-ls"]
+formatter = { command = 'prettier', args = [
+  "--parser",
+  "markdown",
+  "--prose-wrap",
+  "never", 
+]}
+auto-format = true
+soft-wrap.enable = true
+text-width = 120
+soft-wrap.wrap-at-text-width = true
+
+[[language]]
+name = "latex"
+language-servers = ["texlab", "harper-ls"]
+auto-format = true
+indent = {tab-width = 1, unit = "  "}
+soft-wrap.enable = true
+text-width = 120
+soft-wrap.wrap-at-text-width = true
+[[language]]
+name = "bibtex"
+language-servers = ["texlab", "bibtex-tidy"]
+auto-format = true
+indent = {tab-width = 4, unit = " "}
+
+[[language]]
+name = "bash"
+language-servers = ["bash-language-server", "gpt"]
+auto-format = true
+indent = {tab-width = 2, unit = " "}
+
+[[language]]
+name = "fish"
+language-servers = ["fish-lsp"]
+auto-format = true
+
+[[language]]
+name = "typescript"
+language-servers = ["typescript-language-server", "gpt"]
+auto-format = true
+indent = {tab-width = 4, unit = "  "}
+[[language]]
+name = "javascript"
+language-servers = ["typescript-language-server"]
+auto-format = true
+indent = {tab-width = 4, unit = "  "}
+[[language]]
+name = "svelte"
+language-servers = ["svelteserver", "gpt"]
+auto-format = true
+indent = {tab-width = 4, unit = "  "}
+
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer"]
+auto-format = true
+indent = {tab-width = 4, unit = "  "}
+
+[[language]]
+name = "npf"
+scope = "source.npf"
+injection-regex = "npf"
+file-types = ["npf"]
+comment-token = "//"
+roots = []
+indent = { tab-width = 4, unit = "    " }
+
+[[grammar]]
+name = "npf"
+source = { git = "https://github.com/ntyunyayev/tree-sitter-npf", rev = "main" }
+

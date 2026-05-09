@@ -1,0 +1,32 @@
+theme = "snazzy"
+
+[editor]
+line-number = "relative"
+gutters = ["diagnostics", "diff", "line-numbers", "spacer"]
+completion-timeout = 50
+rulers = [80, 120]
+end-of-line-diagnostics = "hint"
+# true-color = true
+
+[editor.smart-tab]
+enable = false
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.indent-guides]
+character = "🄯"
+render = true
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control", "file-name"]
+
+[editor.auto-save]
+focus-lost = true
+after-delay.enable = true
+
