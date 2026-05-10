@@ -1,6 +1,8 @@
+{{ $token := keyring "github" "token" }}
+
 [language-server.gpt]
 command = "helix-gpt"
-args = ["--handler", "copilot", "--copilotApiKey", "SECRET"]
+args = ["--handler", "copilot", "--copilotApiKey", "{{ $token }}"]
 
 [language-server.pyright]
 command = "pyright-langserver"
